@@ -5,7 +5,6 @@ class CreateInternProfiles < ActiveRecord::Migration[8.0]
       t.string :name
       t.string :university
       t.string :grade
-      t.string :string
       t.text :skills
 
       t.timestamps
