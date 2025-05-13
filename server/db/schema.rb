@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_13_100218) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_13_105422) do
   create_table "company_profiles", force: :cascade do |t|
     t.integer "user_id"
     t.string "company_name"
@@ -24,8 +24,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_100218) do
     t.string "name"
     t.string "university"
     t.string "grade"
-    t.string "string"
     t.text "skills"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "internships", force: :cascade do |t|
+    t.integer "company_id"
+    t.string "title"
+    t.text "description"
+    t.string "period"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,6 +57,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_100218) do
 
   add_foreign_key "company_profiles", "users"
   add_foreign_key "intern_profiles", "users"
+  add_foreign_key "internships", "users", column: "company_id"
   add_foreign_key "messages", "users", column: "receiver_id"
   add_foreign_key "messages", "users", column: "sender_id"
 end
