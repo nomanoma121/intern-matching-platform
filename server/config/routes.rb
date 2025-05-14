@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   namespace "api" do
-    resources :users, only: %i[create update]
-    post "login", to: "authentication#login"
+    scope :auth do
+      post "login", to: "auth#login"
+      post "signup", to: "auth#signup"
+      get "me", to: "auth#me"
+    end
   end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
