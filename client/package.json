@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "panda codegen"
+    "prepare": "panda codegen",
+    "check": "biome check --write ./src"
   },
   "dependencies": {
     "next": "15.3.2",
@@ -15,6 +16,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@pandacss/dev": "^0.53.6",
     "@types/node": "^20",
     "@types/react": "^19",
