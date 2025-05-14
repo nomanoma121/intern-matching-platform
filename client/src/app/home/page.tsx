@@ -1,6 +1,4 @@
-import Image from "next/image";
-
-export default function Home() {
+const Home = () => {
 	return (
 		<div>
 			<h1>Welcome to the Home Page</h1>
@@ -10,13 +8,8 @@ export default function Home() {
 				app.
 			</p>
 			<p>Feel free to explore!</p>
-			<Image
-				src="/images/hero.png"
-				alt="Hero Image"
-				width={500}
-				height={300}
-				className="rounded-lg"
-			/>
 		</div>
 	);
-}
+};
+
+export default Home;
