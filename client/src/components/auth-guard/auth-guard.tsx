@@ -1,4 +1,5 @@
-import { useRouter } from "next/router";
+"use client";
+import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "../../provider/auth";
 
 interface Props {
@@ -6,13 +7,20 @@ interface Props {
 	redirectPath?: string;
 }
 
+const UNAUTHENTICATED_PATHS = ["/", "/signup", "/login"];
+
 export const AuthGuard = ({ children, redirectPath = "/" }: Props) => {
 	const auth = useAuth();
 	const router = useRouter();
+	const pathname = usePathname();
+
 	if (!auth.initialized) return null;
+
 	if (!auth.user) {
-		router.push(redirectPath);
-		return null;
+		if (!UNAUTHENTICATED_PATHS.includes(pathname)) {
+			router.push(redirectPath);
+			return null;
+		}
 	}
 	return <>{children}</>;
 };

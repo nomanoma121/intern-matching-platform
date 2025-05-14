@@ -1,6 +1,8 @@
+"use client";
+
 import { css } from "@styled-system/css";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useActionState, useCallback } from "react";
 import { Button } from "../../components/button/button";
 import { Input } from "../../components/input";
