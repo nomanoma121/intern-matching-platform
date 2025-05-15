@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   namespace "api" do
     scope :auth do
       post "login", to: "auth#login"
-      post "signup", to: "auth#signup"
+      post "signup", to: "auth#signup" # 単一のsignupルートを有効化
+      # post "signup/company", to: "auth#signup_company" # 削除またはコメントアウト
+      # post "signup/intern", to: "auth#signup_intern"   # 削除またはコメントアウト
       get "me", to: "auth#me"
     end
   end
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
