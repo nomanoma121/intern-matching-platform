@@ -83,12 +83,13 @@ class Api::AuthController < ApplicationController
 
   # 企業プロファイル用のパラメータ
   def company_profile_params
-    params.require(:user).permit(:company_name, :company_description)
+    params.require(:company_profile).permit(:company_name, :description)
   end
+
 
   # 学生プロファイル用のパラメータ
   def intern_profile_params
-    # name はコントローラーで別途設定するため、ここでは permit しない
-    params.require(:user).permit(:university, :grade, :skills)
+    params.require(:intern_profile).permit(:university, :grade, :skills)
   end
+
 end
