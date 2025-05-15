@@ -10,10 +10,30 @@ import {
 } from "react";
 import { serverFetch } from "../utils/fetch";
 
+type CompanyProfile = {
+	id: number;
+	company_name: string;
+	description: string;
+	// 他の CompanyProfile に関連するフィールドがあれば追加
+};
+
+type InternProfile = {
+	id: number;
+	name: string;
+	university: string;
+	grade: string;
+	skills: string;
+	// 他の InternProfile に関連するフィールドがあれば追加
+};
+
 type User = {
 	id: number;
-	displayId: string;
+	display_id: string; // バックエンドの display_id に合わせる
 	email: string;
+	role: "COMPANY" | "INTERN";
+	company_profile?: CompanyProfile;
+	intern_profile?: InternProfile;
+	token?: string; // ログイン時やサインアップ時にトークンを含むことがあるため
 };
 
 type AuthContextType = {
@@ -33,7 +53,8 @@ const fetchUser = async (): Promise<User | null> => {
 	const res = await serverFetch("/auth/me");
 
 	if (res.ok) {
-		return res.json();
+		const data = await res.json();
+		return data.user; // バックエンドは { user: { ... } } の形式で返すため
 	}
 
 	// 認証エラーの場合のみトークンを削除
@@ -50,8 +71,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 	const router = useRouter();
 
 	useEffect(() => {
-		fetchUser().then((data) => {
-			setUser(data);
+		fetchUser().then((userData) => {
+			setUser(userData);
 			setInitialized(true);
 		});
 	}, []);
