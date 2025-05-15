@@ -1,6 +1,6 @@
 class Api::AuthController < ApplicationController
   before_action :authenticate, only: %i[me]
-  
+ 
   def signup
     @user = User.new(user_params)
     if @user.save

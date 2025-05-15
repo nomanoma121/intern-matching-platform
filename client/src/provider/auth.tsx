@@ -12,7 +12,7 @@ import { serverFetch } from "../utils/fetch";
 
 type User = {
 	id: number;
-	name: string;
+	displayId: string;
 	email: string;
 };
 
@@ -36,7 +36,10 @@ const fetchUser = async (): Promise<User | null> => {
 		return res.json();
 	}
 
-	localStorage.removeItem("token");
+	// 認証エラーの場合のみトークンを削除
+	if (res.status === 401) {
+		localStorage.removeItem("token");
+	}
 
 	return null;
 };
