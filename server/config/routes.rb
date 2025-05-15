@@ -8,6 +8,14 @@ Rails.application.routes.draw do
       # post "signup/intern", to: "auth#signup_intern"   # 削除またはコメントアウト
       get "me", to: "auth#me"
     end
+
+    scope :companies do
+      get ":id", to: "companies#show"
+    end
+    
+    scope :interns do
+      get ":id", to: "interns#show"
+    end
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
