@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_14_002157) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_14_014453) do
   create_table "company_profiles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "company_name", null: false
@@ -53,6 +53,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_002157) do
     t.datetime "updated_at", null: false
     t.string "display_id", null: false
     t.string "role", null: false
+    t.index ["display_id"], name: "index_users_on_display_id", unique: true
   end
 
   add_foreign_key "company_profiles", "users"

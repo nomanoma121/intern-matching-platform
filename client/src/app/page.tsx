@@ -1,22 +1,13 @@
-import Image from "next/image";
-
 export default function Home() {
 	return (
 		<div>
-			<h1>Welcome to the Home Page</h1>
-			<p>This is the home page of our application.</p>
+			<h1>Welcome to Root page</h1>
 			<p>
-				Here you can find various resources and links to other sections of the
-				app.
+				<a href="/login">Login</a>
 			</p>
-			<p>Feel free to explore!</p>
-			<Image
-				src="/images/hero.png"
-				alt="Hero Image"
-				width={500}
-				height={300}
-				className="rounded-lg"
-			/>
+			<p>
+				<a href="/signup">Sign Up</a>
+			</p>
 		</div>
 	);
 }
