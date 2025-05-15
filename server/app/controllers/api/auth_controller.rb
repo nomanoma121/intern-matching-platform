@@ -14,7 +14,9 @@ class Api::AuthController < ApplicationController
 
       profile = nil
       if @user.role == "COMPANY"
-        profile = @user.build_company_profile(company_profile_params)
+        profile_attributes = company_profile_params.to_h
+        profile_attributes[:description] = profile_attributes.delete(:company_description) if profile_attributes.key?(:company_description)
+        profile = @user.build_company_profile(profile_attributes)
       elsif @user.role == "INTERN"
         intern_attributes = intern_profile_params.to_h # Strong Parameters をハッシュに変換
         intern_attributes[:name] = @user.display_id     # name を設定
