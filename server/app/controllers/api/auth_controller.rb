@@ -15,11 +15,9 @@ class Api::AuthController < ApplicationController
       profile = nil
       if @user.role == "COMPANY"
         profile_attributes = company_profile_params.to_h
-        profile_attributes[:description] = profile_attributes.delete(:company_description) if profile_attributes.key?(:company_description)
         profile = @user.build_company_profile(profile_attributes)
       elsif @user.role == "INTERN"
         intern_attributes = intern_profile_params.to_h # Strong Parameters をハッシュに変換
-        intern_attributes[:name] = @user.display_id     # name を設定
         profile = @user.build_intern_profile(intern_attributes)
       else
         # 不正なロールが指定された場合 (Userモデルのバリデーションで先に捕捉される可能性が高い)
@@ -83,13 +81,13 @@ class Api::AuthController < ApplicationController
 
   # 企業プロファイル用のパラメータ
   def company_profile_params
-    params.require(:company_profile).permit(:company_name, :description)
+    params.require(:company_profile).permit(:company_name, :description, :introduction, :location)
   end
 
 
   # 学生プロファイル用のパラメータ
   def intern_profile_params
-    params.require(:intern_profile).permit(:university, :grade, :skills)
+    params.require(:intern_profile).permit(:university, :grade, :skills, :name, :introduction)
   end
 
 end

@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_14_014453) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_16_065716) do
   create_table "company_profiles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "company_name", null: false
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "location"
+    t.text "introduction"
   end
 
   create_table "intern_profiles", force: :cascade do |t|
@@ -27,6 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_014453) do
     t.text "skills", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "introduction"
   end
 
   create_table "internships", force: :cascade do |t|

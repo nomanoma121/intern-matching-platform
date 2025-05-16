@@ -17,7 +17,9 @@ class Api::CompaniesController < ApplicationController
           profile.as_json(
             only: [
               :company_name,
-              :description
+              :description,
+              :introduction,
+              :location
             ]
           )
         )

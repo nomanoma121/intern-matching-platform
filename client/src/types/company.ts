@@ -3,4 +3,6 @@ export type ICompany = {
 	company_name: string;
 	email: string;
 	description: string;
+	location: string;
+	introduction: string;
 };

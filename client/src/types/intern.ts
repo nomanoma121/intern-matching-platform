@@ -5,4 +5,5 @@ export type TIntern = {
 	university: string;
 	skills: string;
 	grade: string;
+	introduction: string;
 };

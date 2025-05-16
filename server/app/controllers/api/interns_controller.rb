@@ -18,7 +18,9 @@ class Api::InternsController < ApplicationController
             only: [
               :university,
               :grade,
-              :skills
+              :skills,
+              :name,
+              :introduction
             ] 
           )
         )
