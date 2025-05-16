@@ -13,17 +13,18 @@ class Api::InternsController < ApplicationController
       }
 
       if profile
-        intern_data[:intern_profile] = profile.as_json(
-          only: [
-            :name,
-            :university,
-            :skills,
-            :grade,
-          ]
+        intern_data.merge!(
+          profile.as_json(
+            only: [
+              :university,
+              :grade,
+              :skills
+            ] 
+          )
         )
       end
 
-      render json: { intern: intern_data }
+      render json: intern_data
     else
       render json: { error: "Intern not found" }, status: :not_found
     end

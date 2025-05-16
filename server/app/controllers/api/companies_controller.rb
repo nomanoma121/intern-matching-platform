@@ -13,15 +13,17 @@ class Api::CompaniesController < ApplicationController
       }
 
       if profile
-        company_data[:company_profile] = profile.as_json(
-          only: [
-            :company_name,
-            :description,
-          ]
+        company_data.merge!(
+          profile.as_json(
+            only: [
+              :company_name,
+              :description
+            ]
+          )
         )
       end
 
-      render json: { company: company_data }
+      render json: company_data
     else
       render json: { error: "Company not found" }, status: :not_found
     end
