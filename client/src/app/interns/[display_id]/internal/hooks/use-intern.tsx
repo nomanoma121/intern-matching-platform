@@ -8,8 +8,8 @@ export const useIntern = (displayId: string) => {
 	const [error, setError] = useState<string | null>(null);
 
 	useEffect(() => {
-    if (!displayId) return;
-    
+		if (!displayId) return;
+
 		const fetchInternData = async () => {
 			try {
 				const response = await serverFetch(`/interns/${displayId}`);

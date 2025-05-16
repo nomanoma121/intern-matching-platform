@@ -8,8 +8,8 @@ export const useCompany = (displayId: string) => {
 	const [error, setError] = useState<string | null>(null);
 
 	useEffect(() => {
-    if (!displayId) return;
-    
+		if (!displayId) return;
+
 		const fetchCompanyData = async () => {
 			try {
 				const response = await serverFetch(`/companies/${displayId}`);
