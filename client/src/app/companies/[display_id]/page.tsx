@@ -57,6 +57,22 @@ const companyProfile = () => {
       >
         Description: {companyData?.description}
       </p>
+      <p
+        className={css({
+          fontSize: "16px",
+          marginBottom: "8px",
+        })}
+      >
+        Location: {companyData?.location}
+      </p>
+      <p
+        className={css({
+          fontSize: "16px",
+          marginBottom: "8px",
+        })}
+      >
+        Introduction: {companyData?.introduction}
+      </p>
     </div>
   );
 }

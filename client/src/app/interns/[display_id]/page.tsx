@@ -70,6 +70,14 @@ const InternProfile = () => {
 			>
 				Grade: {internData?.grade}
 			</p>
+			<p
+				className={css({
+					fontSize: "16px",
+					marginBottom: "8px",
+				})}
+			>
+				Introduction: {internData?.introduction}
+			</p>
 			{error && (
 				<p
 					className={css({
