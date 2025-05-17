@@ -40,8 +40,7 @@ export const useMessage = (partnerId: PartnerId) => {
       if (!res.ok) {
         throw new Error("Failed to send message");
       }
-      const data = await res.json();
-      setMessage((prevMessages) => [...prevMessages, data.message]);
+      fetchMessages();
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);

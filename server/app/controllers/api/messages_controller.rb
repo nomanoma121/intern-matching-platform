@@ -43,7 +43,7 @@ class Api::MessagesController < ApplicationController
     ).order(created_at: :asc)
 
     if @messages.empty?
-      render json: { error: "No messages found" }, status: :not_found
+      render json: [], status: :ok
       return
     end
 
