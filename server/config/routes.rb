@@ -17,10 +17,8 @@ Rails.application.routes.draw do
       get ":id", to: "interns#show"
     end
 
-    scope :profiles do
-      get "companies", to: "companies#index"
-      get "interns", to: "interns#index"
-    end
+    get "companies", to: "companies#index"
+    get "interns", to: "interns#index"
 
   end
 

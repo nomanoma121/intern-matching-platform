@@ -7,7 +7,7 @@ export const useProfileList = (profileType: ProfileType) => {
   const [profileList, setProfileList] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const endpoint = profileType === "INTERN" ? "/profiles/interns" : "/profiles/companies";
+  const endpoint = profileType === "INTERN" ? "/interns" : "/companies";
 
   useEffect(() => {
     const fetchProfileList = async () => {
