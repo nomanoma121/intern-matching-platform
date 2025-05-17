@@ -9,30 +9,16 @@ import {
 	useState,
 } from "react";
 import { serverFetch } from "../utils/fetch";
-
-type CompanyProfile = {
-	id: number;
-	company_name: string;
-	description: string;
-	// 他の CompanyProfile に関連するフィールドがあれば追加
-};
-
-type InternProfile = {
-	id: number;
-	name: string;
-	university: string;
-	grade: string;
-	skills: string;
-	// 他の InternProfile に関連するフィールドがあれば追加
-};
+import { TCompany } from "../types/company";
+import { TIntern } from "../types/intern";
 
 type User = {
 	id: number;
 	display_id: string; // バックエンドの display_id に合わせる
 	email: string;
 	role: "COMPANY" | "INTERN";
-	company_profile?: CompanyProfile;
-	intern_profile?: InternProfile;
+	company_profile?: TCompany;
+	intern_profile?: TIntern;
 	token?: string; // ログイン時やサインアップ時にトークンを含むことがあるため
 };
 

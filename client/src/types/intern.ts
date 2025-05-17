@@ -7,3 +7,9 @@ export type TIntern = {
 	grade: string;
 	introduction: string;
 };
+
+export type TInternList = {
+	display_id: string;
+	name: string;
+	introduction: string;
+};
