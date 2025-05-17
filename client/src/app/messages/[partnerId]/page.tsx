@@ -13,9 +13,6 @@ const Message = () => {
   const { messages, loading, error, sendMessage } = useMessage(partnerId);
   const { user } = useAuth();
 
-  console.log("partnerId", partnerId);
-  console.log(messages);
-
   if (!user || !partnerId) return null;
 
   return (

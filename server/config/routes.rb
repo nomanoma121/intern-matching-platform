@@ -20,10 +20,7 @@ Rails.application.routes.draw do
     get "companies", to: "companies#index"
     get "interns", to: "interns#index"
 
-    scope :messages do
-      post "send", to: "messages#create"
-      get ":display_id", to: "messages#show"
-    end
+    resources :messages, only: [:create, :show]
 
   end
 

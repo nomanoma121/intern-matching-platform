@@ -22,7 +22,7 @@ class Api::MessagesController < ApplicationController
   end
 
   def show
-    partner_display_id = params[:display_id]
+    partner_display_id = params[:id]
     if current_user.display_id == partner_display_id
       render json: { error: "Cannot view own messages" }, status: :forbidden
       return
@@ -69,7 +69,7 @@ class Api::MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:messages).permit(:content, :receiver_id)
+    params.require(:message).permit(:content, :receiver_id)
   end
 
 end

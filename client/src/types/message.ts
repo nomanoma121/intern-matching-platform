@@ -5,9 +5,4 @@ export type TMessage = {
   content: string;
   created_at: string;
   updated_at: string;
-  partner: {
-    id: string;
-    display_id: string;
-    role: "COMPANY" | "INTERN";
-  };
 }

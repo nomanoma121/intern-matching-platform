@@ -30,12 +30,12 @@ export const useMessage = (partnerId: PartnerId) => {
 
   const sendMessage = async (content: string) => {
     try {
-      const res = await serverFetch(`/messages/send`, {
+      const res = await serverFetch(`/messages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ messages: { content, receiver_id: partnerId } }),
+        body: JSON.stringify({ message: { content, receiver_id: partnerId } }),
       });
       if (!res.ok) {
         throw new Error("Failed to send message");
