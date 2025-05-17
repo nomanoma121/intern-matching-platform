@@ -20,7 +20,7 @@ export const Header = () => {
   });
 
   const headerNavItemButtonStyles = css({
-    backgroundColor: "var(--primary-color)",
+    backgroundColor: "blue.500",
     border: "none",
     color: "white",
     padding: "8px 16px",
@@ -31,7 +31,7 @@ export const Header = () => {
     cursor: "pointer",
     borderRadius: "4px",
     "&:hover": {
-      backgroundColor: "var(--secondary-color)",
+      backgroundColor: "blue.600",
     },
   });
 

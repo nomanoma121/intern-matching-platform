@@ -18,7 +18,11 @@ export const useMessage = (partnerId: PartnerId) => {
       const data = await res.json();
       setMessage(data);
     } catch (err) {
-      setError(err.message);
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred");
+      }
     } finally {
       setLoading(false);
     }
@@ -39,7 +43,11 @@ export const useMessage = (partnerId: PartnerId) => {
       const data = await res.json();
       setMessage((prevMessages) => [...prevMessages, data.message]);
     } catch (err) {
-      setError(err.message);
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred");
+      }
     }
   };
 

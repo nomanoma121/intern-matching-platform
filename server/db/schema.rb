@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_16_065716) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_17_135722) do
   create_table "company_profiles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "company_name", null: false
@@ -29,7 +29,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_065716) do
     t.text "skills", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "introduction"
+    t.text "introduction", null: false
+    t.text "description", null: false
   end
 
   create_table "internships", force: :cascade do |t|
