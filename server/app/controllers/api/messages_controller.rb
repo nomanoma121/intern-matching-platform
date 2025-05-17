@@ -53,7 +53,12 @@ class Api::MessagesController < ApplicationController
         sender_id: message.sender_id,
         receiver_id: message.receiver_id,
         created_at: message.created_at,
-        updated_at: message.updated_at
+        updated_at: message.updated_at,
+        partner: {
+          id: partner_id,
+          display_id: partner_id,
+          role: receiver_user.role
+        }
       }
     end
     render json: messages_data
