@@ -20,6 +20,11 @@ Rails.application.routes.draw do
     get "companies", to: "companies#index"
     get "interns", to: "interns#index"
 
+    scope :messages do
+      post "send", to: "messages#create"
+      get ":display_id", to: "messages#show"
+    end
+
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
