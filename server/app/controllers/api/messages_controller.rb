@@ -22,45 +22,48 @@ class Api::MessagesController < ApplicationController
   end
 
   def show
-    partner_id = params[:display_id]
-    if current_user.display_id == partner_id
+    partner_display_id = params[:display_id]
+    if current_user.display_id == partner_display_id
       render json: { error: "Cannot view own messages" }, status: :forbidden
       return
     end
 
-    receiver_user = User.find_by(display_id: partner_id)
-    if receiver_user.nil?
+    partner_user = User.find_by(display_id: partner_display_id)
+    if partner_user.nil?
       render json: { error: "Receiver not found" }, status: :not_found
       return
     end
 
-    partner_id = receiver_user.id
+    partner_id = partner_user.id
 
     @messages = Message.where(
       "(sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?)",
       @current_user.id, partner_id,
       partner_id, @current_user.id
     ).order(created_at: :asc)
+
     if @messages.empty?
       render json: { error: "No messages found" }, status: :not_found
       return
     end
 
+    # display_idマッピング用のキャッシュ
+    user_id_to_display_id = {
+      @current_user.id => @current_user.display_id,
+      partner_id => partner_user.display_id
+    }
+
     messages_data = @messages.map do |message|
       {
         id: message.id,
         content: message.content,
-        sender_id: message.sender_id,
-        receiver_id: message.receiver_id,
+        sender_id: user_id_to_display_id[message.sender_id],
+        receiver_id: user_id_to_display_id[message.receiver_id],
         created_at: message.created_at,
-        updated_at: message.updated_at,
-        partner: {
-          id: partner_id,
-          display_id: partner_id,
-          role: receiver_user.role
-        }
+        updated_at: message.updated_at
       }
     end
+
     render json: messages_data
   end
 
