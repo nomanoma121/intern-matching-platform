@@ -33,7 +33,7 @@ export const useProfileList = (profileType: ProfileType) => {
     };
 
     fetchProfileList();
-  }, []);
+  }, [profileType, endpoint]);
 
   return { profileList, loading, error };
 }

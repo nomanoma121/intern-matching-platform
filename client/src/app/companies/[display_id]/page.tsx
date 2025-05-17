@@ -5,10 +5,7 @@ import { useCompany } from "./internal/hooks/use-company";
 
 const companyProfile = () => {
 	const { display_id } = useParams<{ display_id: string }>();
-	console.log("display_id", display_id);
 	const { companyData, loading, error } = useCompany(display_id);
-
-	console.log("companyData", companyData);
 
 	if (!display_id) {
 		return <div>loading</div>;
