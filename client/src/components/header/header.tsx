@@ -61,7 +61,7 @@ export const Header = () => {
             color: "#333",
           })}
         >
-          <Link href="/" className={headerNavItemStyles}>
+          <Link href="/home" className={headerNavItemStyles}>
             Intern Matching Platform
           </Link>
         </h1>
@@ -77,17 +77,10 @@ export const Header = () => {
             })}
           >
             <li>
-              <Link href="/" className={headerNavItemStyles}>
+              <Link href="/home" className={headerNavItemStyles}>
                 Home
               </Link>
             </li>
-            {auth.user && (
-              <li>
-                <Link href="/todos" className={headerNavItemStyles}>
-                  Todos
-                </Link>
-              </li>
-            )}
             {auth.user ? (
               <li>
                 <Button

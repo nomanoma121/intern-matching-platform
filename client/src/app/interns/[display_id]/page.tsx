@@ -7,98 +7,142 @@ const InternProfile = () => {
 	const { display_id } = useParams<{ display_id: string }>();
 	const { internData, loading, error } = useIntern(display_id);
 
-	if (!display_id) {
-		return <div>Invalid display ID</div>;
-	}
+	if (!display_id) return <div>Invalid display ID</div>;
 	if (loading) return <div>Loading...</div>;
 
 	return (
 		<div
 			className={css({
-				padding: "20px",
-				backgroundColor: "white",
-				borderRadius: "8px",
-				boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+				minHeight: "100vh",
+				backgroundColor: "#f7fafc",
+				display: "flex",
+				flexDirection: "column",
 			})}
 		>
-			<h1
+			{/* === Hero セクション === */}
+			<section
 				className={css({
-					fontSize: "24px",
-					fontWeight: "bold",
-					marginBottom: "16px",
+					background: "linear-gradient(to right, #3182ce, #63b3ed)",
+					color: "white",
+					padding: "80px 20px",
+					textAlign: "center",
 				})}
 			>
-				{internData?.name}
-			</h1>
-			<p
-				className={css({
-					fontSize: "16px",
-					marginBottom: "8px",
-				})}
-			>
-				Display ID: {internData?.display_id}
-			</p>
-			<p
-				className={css({
-					fontSize: "16px",
-					marginBottom: "8px",
-				})}
-			>
-				Email: {internData?.email}
-			</p>
-			<p
-				className={css({
-					fontSize: "16px",
-					marginBottom: "8px",
-				})}
-			>
-				University: {internData?.university}
-			</p>
-			<p
-				className={css({
-					fontSize: "16px",
-					marginBottom: "8px",
-				})}
-			>
-				Skills: {internData?.skills}
-			</p>
-			<p
-				className={css({
-					fontSize: "16px",
-					marginBottom: "8px",
-				})}
-			>
-				Grade: {internData?.grade}
-			</p>
-			<p
-				className={css({
-					fontSize: "16px",
-					marginBottom: "8px",
-				})}
-			>
-				Introduction: {internData?.introduction}
-			</p>
-			{error && (
-				<p
+				<h1
 					className={css({
-						color: "red",
-						fontSize: "16px",
-						marginTop: "16px",
+						fontSize: "48px",
+						fontWeight: "bold",
+						marginBottom: "16px",
 					})}
 				>
-					Error: {error}
-				</p>
-			)}
-			{!internData && !error && (
+					{internData?.name}
+				</h1>
 				<p
 					className={css({
-						fontSize: "16px",
-						marginTop: "16px",
+						fontSize: "20px",
+						maxWidth: "800px",
+						margin: "0 auto",
+						lineHeight: "1.8",
 					})}
 				>
-					No intern data available.
+					{internData?.introduction || "意欲的なインターン生です。"}
 				</p>
-			)}
+			</section>
+
+			{/* === 詳細情報セクション === */}
+			<section
+				className={css({
+					padding: "60px 32px",
+					maxWidth: "800px",
+					margin: "0 auto",
+					display: "flex",
+					flexDirection: "column",
+					gap: "48px",
+					textAlign: "left", // ← 中央ぞろえ解除
+				})}
+			>
+				<div>
+					<h2
+						className={css({
+							fontSize: "30px",
+							fontWeight: "bold",
+							color: "#2a4365",
+							marginBottom: "16px",
+						})}
+					>
+						基本情報
+					</h2>
+					<p className={css({ fontSize: "18px", marginBottom: "8px" })}>
+						<strong>ユーザーID：</strong>@{internData?.display_id}
+					</p>
+					<p className={css({ fontSize: "18px", marginBottom: "8px" })}>
+						<strong>メールアドレス：</strong>{internData?.email}
+					</p>
+					<p className={css({ fontSize: "18px" })}>
+						<strong>学年：</strong>{internData?.grade}
+					</p>
+				</div>
+
+				<div>
+					<h2
+						className={css({
+							fontSize: "30px",
+							fontWeight: "bold",
+							color: "#2a4365",
+							marginBottom: "16px",
+						})}
+					>
+						学歴・スキルなど
+					</h2>
+					<p className={css({ fontSize: "18px", marginBottom: "8px" })}>
+						<strong>大学：</strong>{internData?.university}
+					</p>
+					<p className={css({ fontSize: "18px", marginBottom: "8px" })}>
+						<strong>スキルや経歴の詳細：</strong>
+					</p>
+					<p
+						className={css({
+							backgroundColor: "#edf2f7",
+							padding: "20px",
+							borderRadius: "8px",
+							whiteSpace: "pre-wrap",
+							fontSize: "18px",
+						})}
+					>
+						{internData?.skills || "（未入力）"}
+					</p>
+				</div>
+			</section>
+
+			{/* === フッター風・状態セクション === */}
+			<section
+				className={css({
+					padding: "20px",
+					backgroundColor: "#edf2f7",
+					textAlign: "center",
+					marginTop: "auto",
+				})}
+			>
+				{error && (
+					<p
+						className={css({
+							color: "red",
+							fontSize: "16px",
+						})}
+					>
+						Error: {error}
+					</p>
+				)}
+				{!internData && !error && (
+					<p
+						className={css({
+							fontSize: "16px",
+						})}
+					>
+						インターン情報が見つかりません。
+					</p>
+				)}
+			</section>
 		</div>
 	);
 };
