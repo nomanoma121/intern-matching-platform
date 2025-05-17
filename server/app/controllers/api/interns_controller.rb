@@ -20,7 +20,8 @@ class Api::InternsController < ApplicationController
               :grade,
               :skills,
               :name,
-              :introduction
+              :introduction,
+              :description 
             ] 
           )
         )
@@ -51,7 +52,8 @@ class Api::InternsController < ApplicationController
               :grade,
               :skills,
               :name,
-              :introduction
+              :introduction,
+              :description
             ]
           )
         )

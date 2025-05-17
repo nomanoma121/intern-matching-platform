@@ -87,7 +87,7 @@ class Api::AuthController < ApplicationController
 
   # 学生プロファイル用のパラメータ
   def intern_profile_params
-    params.require(:intern_profile).permit(:university, :grade, :skills, :name, :introduction)
+    params.require(:intern_profile).permit(:university, :grade, :skills, :name, :introduction, :description)
   end
 
 end

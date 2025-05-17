@@ -6,6 +6,7 @@ export type TIntern = {
 	skills: string;
 	grade: string;
 	introduction: string;
+	description: string;
 };
 
 export type TInternList = {
