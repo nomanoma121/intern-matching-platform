@@ -1,6 +1,6 @@
 "use client";
+import { useAuth } from "@/provider/auth";
 import { usePathname, useRouter } from "next/navigation";
-import { useAuth } from "../../provider/auth";
 
 interface Props {
 	children: React.ReactNode;

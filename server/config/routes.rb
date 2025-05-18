@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     get "companies", to: "companies#index"
     get "interns", to: "interns#index"
 
-    resources :messages, only: [:create, :show]
+    resources :messages, only: [:create, :show, :index]
 
   end
 

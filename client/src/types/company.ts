@@ -11,4 +11,4 @@ export type ICompanyList = {
 	display_id: string;
 	company_name: string;
 	introduction: string;
-}
+};

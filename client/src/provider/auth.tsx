@@ -8,9 +8,9 @@ import {
 	useEffect,
 	useState,
 } from "react";
+import type { TCompany } from "../types/company";
+import type { TIntern } from "../types/intern";
 import { serverFetch } from "../utils/fetch";
-import { TCompany } from "../types/company";
-import { TIntern } from "../types/intern";
 
 type User = {
 	id: number;

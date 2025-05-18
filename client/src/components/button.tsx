@@ -31,10 +31,5 @@ export const Button = ({ className, ...props }: Props) => {
 		},
 	});
 
-	return (
-		<button
-			{...props}
-			className={cx(baseStyle, className)}
-		/>
-	);
+	return <button {...props} className={cx(baseStyle, className)} />;
 };

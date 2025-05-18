@@ -4,7 +4,7 @@ import { css } from "@styled-system/css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useActionState, useCallback } from "react";
-import { Button } from "../../components/button/button";
+import { Button } from "../../components/button";
 import { Input } from "../../components/input";
 import { useAuth } from "../../provider/auth";
 import { serverFetch } from "../../utils/fetch";
